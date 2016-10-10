@@ -99,7 +99,7 @@ int lock_reg(int, int, int, off_t, int, off_t);	/* Figure 14.5 */
 #define un_lock(fd, offset, whence, len) \
 	lock_reg((fd), F_SETLK, F_UNLCK, (offset), (whence), (len))
 
-pit_t lock_test(int, int, off_t, int, off_t)	/* Figure 14.6 */
+pid_t lock_test(int, int, off_t, int, off_t);	/* Figure 14.6 */
 
 #define is_read_lockable(fd, offset, whence, len) \
 	(lock_test((fd), F_RDLCK, (offset), (whence), (len)) == 0)
@@ -116,7 +116,7 @@ void err_sys(const char *, ...)__attribute__((noreturn));
 
 void log_msg(const char *, ...);	/* Appendix B */
 void log_open(const char *, int, int);
-void log_quit(const char *, ...);__attribute__((noreturn));
+void log_quit(const char *, ...)__attribute__((noreturn));
 void log_ret(const char *, ...);
 void log_sys(const char *, ...)__attribute__((noreturn));
 void log_exit(int, const char *, ...)__attribute__((noreturn));
