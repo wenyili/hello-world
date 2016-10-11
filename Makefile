@@ -1,16 +1,16 @@
 CC = gcc
 
-FILES_U = unbufferdio.o errfunc.o
-FILES_B = bufferdio.o errfunc.o
+FILES = lseektest.o errfunc.o
+FILES_H = createAHole.o errfunc.o
 
-all : u.out b.out
+all : a.out h.out
 
-u.out : $(FILES_U)
-	$(CC) $(FILES_U) -o $@
+a.out : $(FILES)
+	$(CC) $(FILES) -o $@
 	@echo "make $@ finished on `date`"
 
-b.out : $(FILES_B)
-	$(CC) $(FILES_B) -o $@
+h.out : $(FILES_H)
+	$(CC) $(FILES_H) -o $@
 	@echo "make $@ finished on `date`"
 
 %.o : %.c %.h
@@ -18,4 +18,4 @@ b.out : $(FILES_B)
 
 clean:
 	rm -f *.o
-	rm -f u.out b.out 
+	rm -f a.out h.out 
