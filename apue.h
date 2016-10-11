@@ -32,7 +32,7 @@
 /*
  * Default file access permissions for new files
  */
-#define FILE_MODE	(S_ISUSR | S_IWUSR | S_IRGPR | S_IROTH)
+#define FILE_MODE	(S_IRUSR | S_IWUSR | S_IXGRP | S_IROTH)
 
 /*
  * Default permissions for new directories
