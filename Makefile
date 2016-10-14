@@ -5,8 +5,9 @@ FILES_H = createAHole.o errfunc.o
 FILES_U = unbufferdio.o errfunc.o
 FILES_F = fileflags.o errfunc.o
 FILES_D = myowndup2.o errfunc.o
+FILES_F = filetype.o errfunc.o
 
-all : a.out h.out u.out f.out d.out
+all : a.out h.out u.out f.out d.out f.out
 
 a.out : $(FILES)
 	$(CC) $(FILES) -o $@
@@ -28,9 +29,13 @@ d.out : $(FILES_D)
 	$(CC) $(FILES_D) -o $@
 	@echo "make $@ finished on `date`"
 
+f.out : $(FILES_F)
+	$(CC) $(FILES_F) -o $@
+	@echo "make $@ finished on `date`"
+
 %.o : %.c %.h
 	$(CC) -o $<
 
 clean:
 	rm -f *.o
-	rm -f a.out h.out u.out f.out d.out
+	rm -f a.out h.out u.out f.out d.out f.out
