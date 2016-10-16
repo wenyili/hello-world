@@ -5,9 +5,13 @@ FILES_H = createAHole.o errfunc.o
 FILES_U = unbufferdio.o errfunc.o
 FILES_F = fileflags.o errfunc.o
 FILES_D = myowndup2.o errfunc.o
-FILES_F = filetype.o errfunc.o
+FILES_I = filetype.o errfunc.o
+FILES_S = setUserID.o errfunc.o
+FILES_M = umask.o errfunc.o
+FILES_B = unlink.o errfunc.o
+FILES_C = changeTime.o errfunc.o
 
-all : a.out h.out u.out f.out d.out f.out
+all : a.out h.out u.out f.out d.out i.out s.out m.out b.out c.out
 
 a.out : $(FILES)
 	$(CC) $(FILES) -o $@
@@ -29,8 +33,24 @@ d.out : $(FILES_D)
 	$(CC) $(FILES_D) -o $@
 	@echo "make $@ finished on `date`"
 
-f.out : $(FILES_F)
+i.out : $(FILES_F)
 	$(CC) $(FILES_F) -o $@
+	@echo "make $@ finished on `date`"
+
+s.out : $(FILES_S)
+	$(CC) $(FILES_S) -o $@
+	@echo "make $@ finished on `date`"
+
+m.out : $(FILES_M)
+	$(CC) $(FILES_M) -o $@
+	@echo "make $@ finished on `date`"
+
+b.out : $(FILES_B)
+	$(CC) $(FILES_B) -o $@
+	@echo "make $@ finished on `date`"
+
+c.out : $(FILES_C)
+	$(CC) $(FILES_C) -o $@
 	@echo "make $@ finished on `date`"
 
 %.o : %.c %.h
@@ -38,4 +58,4 @@ f.out : $(FILES_F)
 
 clean:
 	rm -f *.o
-	rm -f a.out h.out u.out f.out d.out f.out
+	rm -f a.out h.out u.out f.out d.out i.out s.out m.out b.out c.out
