@@ -15,10 +15,10 @@ int main(int argc, char **argv)
 			err_ret("%s: open error", argv[i]);
 			continue;
 		}
-		times[0] = statbuf.st_atime;
-		times[1] = statbuf.st_mtime;
-//		if (futimens(fd, times) < 0)        /* reset times */
-//			err_ret("%s: futimens error", argv[i]);
+		times[0] = statbuf.st_atim;
+		times[1] = statbuf.st_mtim;
+		if (futimens(fd, times) < 0)        /* reset times */
+			err_ret("%s: futimens error", argv[i]);
 		close(fd);
 	}
 	exit(0);
