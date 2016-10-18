@@ -11,8 +11,9 @@ FILES_M = umask.o errfunc.o
 FILES_B = unlink.o errfunc.o
 FILES_C = changeTime.o errfunc.o
 FILES_W = fileWalker.o errfunc.o util.c
+FILES_E = cpAHole.o errfunc.o
 
-all : a.out h.out u.out f.out d.out i.out s.out m.out b.out c.out w.out
+all : a.out h.out u.out f.out d.out i.out s.out m.out b.out c.out w.out e.out
 
 a.out : $(FILES)
 	$(CC) $(FILES) -o $@
@@ -58,9 +59,13 @@ w.out : $(FILES_W)
 	$(CC) $(FILES_W) -o $@
 	@echo "make $@ finished on `date`"
 
+e.out : $(FILES_E)
+	$(CC) $(FILES_E) -o $@
+	@echo "make $@ finished on `date`"
+
 %.o : %.c %.h
 	$(CC) -o $<
 
 clean:
 	rm -f *.o
-	rm -f a.out h.out u.out f.out d.out i.out s.out m.out b.out c.out w.out
+	rm -f a.out h.out u.out f.out d.out i.out s.out m.out b.out c.out w.out e.out
